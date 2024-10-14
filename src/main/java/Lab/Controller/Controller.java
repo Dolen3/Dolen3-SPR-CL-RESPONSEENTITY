@@ -38,8 +38,8 @@ public class Controller {
      * that says "Bad Request"
      */
     @GetMapping("/lab1")
-    public ResponseEntity lab1(){
-        return null;
+    public ResponseEntity<String> lab1() {
+        return ResponseEntity.status(400).body("Bad Request");
     }
     /**
      * TODO: return a ResponseEntity containing a response of type "Resource Created", setting the "content-length"
@@ -47,7 +47,9 @@ public class Controller {
      * body.
      */
     @GetMapping("/lab2")
-    public ResponseEntity lab2(@RequestBody Sample sample){
-        return null;
+    public ResponseEntity<Sample> lab2(@RequestBody Sample sample) {
+        return ResponseEntity.status(201)
+                .header("content-length", "100")
+                .body(sample);
     }
 }
